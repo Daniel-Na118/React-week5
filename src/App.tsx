@@ -4,11 +4,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-<<<<<<< HEAD
 import './style.css';
-=======
-
->>>>>>> 464a639 (style and logic)
 const App = () => {
   const { user, login, logout } = useAuth();
 
