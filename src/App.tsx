@@ -4,7 +4,7 @@ import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
-
+import './style.css';
 const App = () => {
   const { user, login, logout } = useAuth();
 

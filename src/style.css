@@ -1,0 +1,472 @@
+/* 리셋 및 기본 변수 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary: #ec4899;
+  --success: #10b981;
+  --danger: #ef4444;
+  --dark: #1e293b;
+  --gray: #64748b;
+  --gray-light: #f1f5f9;
+  --white: #ffffff;
+  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  color: var(--dark);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Header 스타일 */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-md);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+  padding: 1rem 0;
+}
+
+header > div,
+header nav,
+header > nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header a:first-child {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+header a:first-child:hover {
+  transform: scale(1.05);
+}
+
+/* 헤더 오른쪽 영역 */
+header > div > div:last-child,
+header > nav > div:last-child,
+header div:has(> a[href="/login"]),
+header div:has(> button) {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  background: var(--white);
+  padding: 0.5rem 0.75rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow);
+}
+
+/* 헤더 내 모든 버튼과 링크 */
+header a[href="/login"],
+header a[href="/signup"],
+header button {
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9rem;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: 600;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  -webkit-text-fill-color: initial;
+  background-clip: border-box;
+}
+
+header a[href="/login"] {
+  background: var(--gray-light);
+  color: var(--dark);
+}
+
+header a[href="/login"]:hover {
+  background: var(--gray);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+header a[href="/signup"] {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+header a[href="/signup"]:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border-radius: 50px;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.user-name {
+  font-weight: 500;
+  color: var(--dark);
+}
+
+/* Main 컨텐츠 */
+main {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 버튼 스타일 */
+button, .btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: var(--white);
+  border-radius: 50px;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-1px);
+}
+
+/* 폼 스타일 */
+form,
+main > div {
+  background: var(--white);
+  padding: 3rem 3.5rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-lg);
+  max-width: 480px;
+  margin: 3rem auto;
+}
+
+main > div > h2,
+form h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+main > div > p,
+form > p:first-of-type {
+  color: var(--gray);
+  margin-bottom: 2.5rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+main > div > div,
+form > div {
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--gray-light);
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: var(--white);
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
+}
+
+input::placeholder {
+  color: #94a3b8;
+}
+
+form button[type="submit"],
+main > div button[type="submit"] {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: var(--white);
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+form button[type="submit"]:hover,
+main > div button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+form > p:last-of-type,
+main > div > p:last-of-type {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--gray-light);
+  text-align: center;
+  color: var(--gray);
+  font-size: 0.95rem;
+}
+
+form > p:last-of-type a,
+main > div > p:last-of-type a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+form > p:last-of-type a:hover,
+main > div > p:last-of-type a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+/* 홈페이지 스타일 */
+.hero {
+  background: var(--white);
+  padding: 4rem 3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* 카드 스타일 */
+.card {
+  background: var(--white);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* 알림 메시지 */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.alert-success {
+  background: #d1fae5;
+  color: #065f46;
+  border-left: 4px solid var(--success);
+}
+
+.alert-error {
+  background: #fee2e2;
+  color: #991b1b;
+  border-left: 4px solid var(--danger);
+}
+
+.alert-info {
+  background: #dbeafe;
+  color: #1e40af;
+  border-left: 4px solid var(--primary);
+}
+
+/* 로딩 스피너 */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--gray-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  main {
+    padding: 0 1rem;
+  }
+
+  .form-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}
