@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getUserInfo } from '../services/auth';
 
 export const useAuth = () => {
@@ -18,7 +18,7 @@ export const useAuth = () => {
     }
   }, [token]);
 
-  const login = (newToken) => {
+  const login = (newToken: string) => {
     localStorage.setItem('token', newToken);
     setToken(newToken);
   };

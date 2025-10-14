@@ -2,13 +2,17 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../services/auth';
 
-const LoginPage = ({ onLogin }) => {
+interface LoginPageProps {
+  onLogin: (token: string) => void;
+}
+
+const LoginPage = ({ onLogin }: LoginPageProps) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const { token } = await login(`${email}@snu.ac.kr`, password);

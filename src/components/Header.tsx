@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
 
-const Header = ({ user, onLogout }) => {
+interface HeaderProps {
+  user?: {
+    name: string;
+    [key: string]: unknown;
+  } | null;
+  onLogout: () => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
   return (
     <header>
       <nav>

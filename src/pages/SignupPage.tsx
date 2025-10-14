@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { signup, login } from '../services/auth';
+import { login, signup } from '../services/auth';
 
-const SignupPage = ({ onLogin }) => {
+interface SignupPageProps {
+  onLogin: (token: string) => void;
+}
+
+const SignupPage = ({ onLogin }: SignupPageProps) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -11,7 +15,7 @@ const SignupPage = ({ onLogin }) => {
   const [passwordFocused, setPasswordFocused] = useState(false);
   const navigate = useNavigate();
 
-  const hasSequential = (str) => {
+  const hasSequential = (str: string) => {
     if (str.length < 3) return false;
     for (let i = 0; i <= str.length - 3; i++) {
       const char1 = str.charCodeAt(i);
@@ -36,7 +40,7 @@ const SignupPage = ({ onLogin }) => {
     noSequential: password.length > 0 && !hasSequential(password) && !/(.)\1{2,}/.test(password),
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (password !== passwordConfirm) {
       alert('Passwords do not match');
