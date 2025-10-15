@@ -12,12 +12,16 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
   return (
     <header>
       <nav>
-        <Link to="/" className="logo">스누인턴</Link>
+        <Link to="/" className="logo">
+          스누인턴
+        </Link>
         <div className="nav-links">
           {user ? (
             <>
               <span>{user.name}님</span>
-              <button onClick={onLogout} className="logout-button">로그아웃</button>
+              <button onClick={onLogout} className="logout-button">
+                로그아웃
+              </button>
             </>
           ) : (
             <>
